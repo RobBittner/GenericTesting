@@ -1,0 +1,15 @@
+
+public abstract class PublicMessageException<T> {
+  public virtual string Message { get; set; }
+
+  public string PublicMessage => this.Message;
+
+  public Type ExceptionType => typeof(T);
+}
+
+public class PublicMessageExceptionArgumentNullException : PublicMessageException<ArgumentNullException> {
+
+  public new string Message => this.Exception.Message[0] + "hi" + this.Exception.Message.Substring(1);
+
+  public ArgumentNullException Exception { get; set; }
+}
